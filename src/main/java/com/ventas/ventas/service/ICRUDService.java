@@ -1,11 +1,9 @@
 package com.ventas.ventas.service;
 
-import com.ventas.ventas.model.Cliente;
-
 import java.util.List;
 import java.util.Optional;
 
-public interface ICRUDService<T> {
+public interface ICRUDService <T>{
 
     List<T> findAll();
     Optional<T> findById(Integer id);
@@ -13,5 +11,4 @@ public interface ICRUDService<T> {
     T create(T model);
     T update(T model);
     void delete(Integer id);
-
 }

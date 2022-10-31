@@ -1,38 +1,30 @@
 package com.ventas.ventas.service;
+
 import com.ventas.ventas.model.Producto;
 import com.ventas.ventas.repository.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ProductoService implements ICRUDService<Producto>{
+@Service
+public class ProductoService implements  ICRUDService<Producto>{
 
     @Autowired
-    private IProductoRepository productoRepository;
+    private IProductoRepository productoRepo;
+    @Override
+    public List<Producto> findAll() {return productoRepo.findAll();}
 
     @Override
-    public List findAll() {
-        return productoRepository.findAll();
-    }
+    public Optional<Producto> findById(Integer id) {return productoRepo.findById(id);}
 
     @Override
-    public Optional findById(Integer id) {
-        return productoRepository.findById(id);
-    }
+    public Producto create(Producto producto) {return productoRepo.save(producto);}
 
     @Override
-    public Producto create(Producto model) {
-        return productoRepository.save(model);
-    }
+    public Producto update(Producto producto) {return productoRepo.save(producto);}
 
     @Override
-    public Producto update(Producto model) {
-        return productoRepository.save(model);
-    }
-
-    @Override
-    public void delete(Integer id) {
-        productoRepository.deleteById(id);
-    }
+    public void delete(Integer id) {productoRepo.deleteById(id);}
 }

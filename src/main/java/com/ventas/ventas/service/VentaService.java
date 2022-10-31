@@ -4,36 +4,31 @@ import com.ventas.ventas.model.Venta;
 import com.ventas.ventas.repository.IVenta;
 import org.springframework.beans.factory.annotation.Autowired;
 
+
+import com.ventas.ventas.model.Venta;
+import com.ventas.ventas.repository.IVenta;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class VentaService implements ICRUDService<Venta>{
 
     @Autowired
-    private IVenta ventaRepository;
+    private IVenta ventaRepo;
+    @Override
+    public List<Venta> findAll() {return ventaRepo.findAll();}
 
     @Override
-    public List<Venta> findAll() {
-        return ventaRepository.findAll();
-    }
+    public Optional<Venta> findById(Integer id) {return ventaRepo.findById(id);}
 
     @Override
-    public Optional<Venta> findById(Integer id) {
-        return ventaRepository.findById(id);
-    }
+    public Venta create(Venta venta) {return ventaRepo.save(venta);}
 
     @Override
-    public Venta create(Venta model) {
-        return ventaRepository.save(model);
-    }
+    public Venta update(Venta venta) {return ventaRepo.save(venta);}
 
     @Override
-    public Venta update(Venta model) {
-        return ventaRepository.save(model);
-    }
-
-    @Override
-    public void delete(Integer id) {
-        ventaRepository.deleteById(id);
-    }
+    public void delete(Integer id) {ventaRepo.deleteById(id);}
 }
