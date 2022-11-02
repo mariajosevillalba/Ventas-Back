@@ -52,6 +52,14 @@ public class Venta {
         this.cliente = cliente;
     }
 
+    public List<DetalleVenta> getDetalleVenta() {
+        return detalleVenta;
+    }
+
+    public void setDetalleVenta(List<DetalleVenta> detalleVenta) {
+        this.detalleVenta = detalleVenta;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -64,4 +72,6 @@ public class Venta {
     public int hashCode() {
         return Objects.hash(idVenta);
     }
+
+
 }
